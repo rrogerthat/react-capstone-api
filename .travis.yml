@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: x0qN0vYjt5AdLta6I1vztkvUQV8UT5WohdrBNtw0hocKrvp+dFcjlUVBOVaBbqGCePgxyyA9eDRT1L3NHFQSKJPLiBmc4oveBm3E1nQOOy/LwHh8mXNfib0JVprZUgtztpTozMJUcMHtnEg+6t9/yr5CnsIfNrJPiyWhZ2CvTu6SDGM6xC907Dw8gqyg8SLT4ggkjIkCkjHkrCHYNCCUHW+SDNRCDL3HrUrhaBS3+Jgys3oVZ5TY/PiZfN+81P6TNs1gXqnWg6IgZMP+aKvIgY7S1oy5yjZFKOphkQ9fKhsVjUHQndS+o6PhNbg9kiz6HxBzS7LefuxaoA7tuZMTlRHYUr0SWS+RC8FZ2Ba5JRraAokNXXrJGJPq3GoN0zMqF1FGtNt/Rnf92Fia59GhnZl6qMRfVeW1Ap3OQMecxyViXSRPfsBATWcItWIJol/wmWawYk3I+KfREIq9l4CcMLsJ3+m3EjDDRNEPTGZVheDXeeWEAIDZKmCme92YoxFuZFHdAJjy0h2Ti6PWn2qwwmqnVx6Zm97YGoPuO55iTU1YTEwj3X7/+KmonL0aF1wH9Ll5rBBmG0fd4Wy5Nw44HUkmd/7Y7xo8f22VZmyuUFzw7pTWssL4/hFanKae1mYhycf4yjB4Mv57Z4Wdc9ViMM+sx9bXQC7CLdVgkRpl6BM=
+  app: react-bookmark-api
+  on:
+    repo: rrogerthat/react-capstone-api
