@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const { router: usersRouter } = require('./users'); //reassign variable name to usersRouter (instead of router)
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth'); //both files exporting 'router' so we change variable
+const { router: bookRouter } = require('./items/router');
 
 mongoose.Promise = global.Promise;
 
@@ -28,13 +29,10 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 //request handler
 app.use('/api/users/', usersRouter); //Requests to /api/users is redirected to usersRouter (renamed from router)
-app.use('/api/auth/', authRouter);  
+app.use('/api/auth/', authRouter); 
+app.use('/items', bookRouter); //pathway to bookRouter would be /items/...
 
 const jwtAuth = passport.authenticate('jwt', { session: false }); //use passport to authenticate rather than cookies.
-
-app.get('/api/', (req, res) => {
-	res.json({ok: true});
-});
 
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {			//hook this up to main data
