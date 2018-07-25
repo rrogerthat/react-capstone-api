@@ -17,7 +17,7 @@ router.get('/api', (req, res) => {		//route would be /items/api
 	res.json({ok: true});
 });
 
-//display expenses by category
+//display bookmarks by category
 router.get('/:category', jwtAuth, (req, res) => {	//request to /items/:category
 	Bookmark
 	.find( {category: req.params.category, userId: req.user.id} )
@@ -36,6 +36,7 @@ router.get('/:category', jwtAuth, (req, res) => {	//request to /items/:category
 
 //post a bookmark
 router.post('/entry', jwtAuth, (req, res) => {		//route is /items/entry
+	console.log(req.body);
 	const requiredFields = ['category', 'link', 'description', 'importance', 'knowledge'];
 	for (let i = 0; i < requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -45,10 +46,10 @@ router.post('/entry', jwtAuth, (req, res) => {		//route is /items/entry
 			return res.status(400).send(message);
 		}
 	}
-
+	console.log(req.user)
 	Bookmark
 	.create({
-		// userId: req.user.id,	//so user accesses only his data
+		userId: req.user.id,	//so user accesses only his data
 		category: req.body.category,
 		link: req.body.link,	
 		description: req.body.description,
@@ -62,7 +63,7 @@ router.post('/entry', jwtAuth, (req, res) => {		//route is /items/entry
     });
 });
 
-//to update an expense 
+//to update a bookmark 
 router.put('/update/:id',  (req, res) => {
 	if (!(req.params.id && req.body.id && req.params.id  === req.body.id)) { //make sure ID's are entered and matched.
 		const message = (

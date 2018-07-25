@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookmarkSchema = mongoose.Schema({
-	// userId: {type: Schema.Types.ObjectId, ref: 'User'}, //store userId's which belong to each user account
+	userId: {type: Schema.Types.ObjectId, ref: 'User'}, //store userId's which belong to each user account
 	category: {type: String, required: true},
 	link: {type: String, required: true},
 	description: {type: String, required: true},
