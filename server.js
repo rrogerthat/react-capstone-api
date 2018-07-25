@@ -28,18 +28,11 @@ app.use(
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 //request handler
-app.use('/api/users/', usersRouter); //Requests to /api/users is redirected to usersRouter (renamed from router)
-app.use('/api/auth/', authRouter); 
+app.use('/users', usersRouter); //Requests to /api/users is redirected to usersRouter (renamed from router)
+app.use('/auth', authRouter); 
 app.use('/items', bookRouter); //pathway to bookRouter would be /items/...
 
 const jwtAuth = passport.authenticate('jwt', { session: false }); //use passport to authenticate rather than cookies.
-
-// A protected endpoint which needs a valid JWT to access it
-app.get('/api/protected', jwtAuth, (req, res) => {			//hook this up to main data
-  return res.json({
-    data: 'rosebud'
-  });
-});
 
 // Referenced by both runServer and closeServer. closeServer
 // assumes runServer has run and set `server` to a server object
