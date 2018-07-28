@@ -65,13 +65,13 @@ router.post('/entry', jwtAuth, (req, res) => {		//route is /items/entry
 
 //to update a bookmark 
 router.put('/update/:id',  (req, res) => {
-	if (!(req.params.id && req.body.id && req.params.id  === req.body.id)) { //make sure ID's are entered and matched.
-		const message = (
-      		`Request path id (${req.params.id}) and request body id ` +
-      		`(${req.body.id}) must match`);
-    	console.error(message);
-    	return res.status(400).json({ message: message });
-  	}
+	// if (!(req.params.id && req.body.id && req.params.id  === req.body.id)) { //make sure ID's are entered and matched.
+	// 	const message = (
+ //      		`Request path id (${req.params.id}) and request body id ` +
+ //      		`(${req.body.id}) must match`);
+ //    	console.error(message);
+ //    	return res.status(400).json({ message: message });
+ //  	}
 
   	const toUpdate = {};
   	const updateableFields = ['category', 'link', 'description', 'importance', 'knowledge'];
